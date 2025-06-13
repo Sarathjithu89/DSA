@@ -42,7 +42,6 @@ B(5);
 
 //factorial using recurssion
 function fact(n) {
-  if (n < 0) return;
   if (n === 1) return 1;
   return n * fact(n - 1);
 }

@@ -19,26 +19,52 @@
 // console.log(sumRow(matrix));
 
 //return the index of a target in the array;
-const matrix = [
-  [2, 4, 5],
-  [11, 15, 18],
-  [20, 26, 32],
+// const matrix = [
+//   [2, 4, 5],
+//   [11, 15, 18],
+//   [20, 26, 32],
+// ];
+// function findIndex(array, target) {
+//   let m = array.length;
+//   let n = array[0].length;
+
+//   let left = 0;
+//   let right = m * n - 1;
+//   while (left <= right) {
+//     let mid = Math.floor((left + right) / 2);
+//     let num = array[Math.floor(mid / n)][mid % n];
+//     if (target === num) return [Math.floor(mid / n), mid % n];
+//     if (target > num) {
+//       left = mid + 1;
+//     } else {
+//       right = mid - 1;
+//     }
+//   }
+// }
+// console.log(findIndex(matrix));
+
+const arr = [
+  [1, 3, 4],
+  [5, 7, 8],
+  [10, 23, 24],
 ];
+
 function findIndex(array, target) {
   let m = array.length;
   let n = array[0].length;
-
   let left = 0;
   let right = m * n - 1;
   while (left <= right) {
     let mid = Math.floor((left + right) / 2);
     let num = array[Math.floor(mid / n)][mid % n];
-    if (target === num) return [Math.floor(mid / n), mid % n];
-    if (target > num) {
-      left = mid + 1;
-    } else {
+    if (num === target) return [Math.floor(mid / n), mid % n];
+    if (num > target) {
       right = mid - 1;
+    } else {
+      left = mid + 1;
     }
   }
+  return -1;
 }
-console.log(findIndex(matrix));
+
+console.log(findIndex(arr, 8));
