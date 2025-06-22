@@ -71,3 +71,69 @@
 // console.log(functionStack.isEmpty());
 
 // functionStack.print();
+
+//stack using linked list
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+class Stack {
+  constructor() {
+    this.top = null;
+  }
+  push(data) {
+    const newNode = new Node(data);
+    newNode.next = this.top;
+    this.top = newNode;
+  }
+  pop() {
+    if (!this.top) return;
+    const poped = this.top.data;
+    this.top = this.top.next;
+    return poped;
+  }
+  peek() {
+    if (!this.top) return null;
+    return this.top.data;
+  }
+  print() {
+    if (!this.top) return;
+    let current = this.top;
+    while (current != null) {
+      console.log(current.data);
+      current = current.next;
+    }
+  }
+}
+const stack = new Stack();
+// stack.push(1);
+// stack.push(2);
+// stack.push(3);
+// stack.push(4);
+
+stack.print();
+console.log("poped", stack.pop());
+console.log("poped", stack.pop());
+
+stack.print();
+
+//stack using queue;
+class Stack {
+  constructor() {
+    this.q1 = [];
+    this.q2 = [];
+  }
+  push(data) {
+    this.q2.push(data);
+    while (this.q1.length > 0) {
+      this.q2.push(this.q1.shift());
+    }
+    [this.q1, this.q2] = [this.q2, this.q1];
+  }
+  pop() {
+    if (!this.q1) return;
+    return this.q1.shift();
+  }
+}
