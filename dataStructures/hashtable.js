@@ -94,7 +94,7 @@ class HashTable {
     } else {
       let current = this.bucket[index];
       while (true) {
-        if ((current.key = key)) {
+        if (current.key === key) {
           current.value = value;
           return;
         }
@@ -107,5 +107,13 @@ class HashTable {
   get(key) {
     const index = this.hash(key);
     let current = this.bucket[index];
+    if (!current) return null;
+    while (current) {
+      if (current.key === key) {
+        return current.value;
+      }
+      current = current.next;
+    }
+    return null;
   }
 }
