@@ -82,3 +82,36 @@ function sumReplace(array, count = array.length - 1, sum = 0) {
 console.log(sumReplace(array));
 
 */ //--------------------end-----------------------------///
+const fileSystem = {
+  name: "root",
+  files: ["file1.txt", "file2.txt"],
+  folders: [
+    {
+      name: "docs",
+      files: ["doc1.pdf", "doc2.pdf"],
+      folders: [
+        {
+          name: "personal",
+          files: ["resume.docx"],
+          folders: [],
+        },
+      ],
+    },
+    {
+      name: "images",
+      files: ["photo1.jpg", "photo2.jpg"],
+      folders: [],
+    },
+  ],
+};
+
+function getAllFiles(folder) {
+  let allFiles = [...folder.files];
+  for (const subFolder of folder.folders) {
+    allFiles = allFiles.concat(getAllFiles(subFolder));
+  }
+  return allFiles;
+}
+
+const files = getAllFiles(fileSystem);
+console.log(files);
