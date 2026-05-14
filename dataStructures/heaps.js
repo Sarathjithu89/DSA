@@ -14,8 +14,8 @@ class minHeap {
   swap(i, j) {
     [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
   }
-
-  inset(value) {
+2
+  insert(value) {
     this.heap.push(value);
     this.heapifyUp();
   }
@@ -42,12 +42,14 @@ class minHeap {
     while (this.getLeftChildIndex(index) < this.heap.length) {
       let smallerChildIndex = this.getLeftChildIndex(index);
       let rightChildIndex = this.getRightChildIndex(index);
+
       if (
         rightChildIndex < this.heap.length &&
         this.heap[rightChildIndex] < this.heap[smallerChildIndex]
       ) {
         smallerChildIndex = rightChildIndex;
       }
+
       if (this.heap[index] > this.heap[smallerChildIndex]) {
         this.swap(index, smallerChildIndex);
         index = smallerChildIndex;
@@ -58,12 +60,12 @@ class minHeap {
 
 const hp = new minHeap();
 
-hp.inset(1);
-hp.inset(3);
-hp.inset(5);
-hp.inset(6);
-hp.inset(7);
-hp.inset(0);
+hp.insert(1);
+hp.insert(3);
+hp.insert(5);
+hp.insert(6);
+hp.insert(7);
+hp.insert(0);
 
 hp.extractMin();
 console.log(hp);

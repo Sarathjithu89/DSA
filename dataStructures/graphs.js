@@ -16,10 +16,10 @@ class Graph {
   }
   removeEdge(vertex1, vertex2) {
     this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(
-      (v) => v !== vertex2
+      (v) => v !== vertex2,
     );
     this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(
-      (v) => v !== vertex1
+      (v) => v !== vertex1,
     );
   }
   removeVertex(vertex) {
@@ -35,6 +35,22 @@ class Graph {
     for (let neighbor of this.adjacencyList[start]) {
       if (!visited.has(neighbor)) {
         this.dfs(neighbor, visited);
+      }
+    }
+  }
+  dfsIterative(start) {
+    let stack = [start];
+    let visited = new Set();
+    while (stack.length > 0) {
+      let node = stack.pop();
+      if (!visited.had(node)) {
+        console.log(node);
+        visited.add(node);
+      }
+      for (let neighbor of this.adjacencyList[node]) {
+        if (!visited.had(neighbor)) {
+          stack.push(neighbor);
+        }
       }
     }
   }
